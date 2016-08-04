@@ -161,19 +161,6 @@ Further reading:
 * [Favicon](https://www.wikiwand.com/en/Favicon)
 * [Touch Icons](https://mathiasbynens.be/notes/touch-icons)
 
-### Author links
-
-Link to your Google+ profile using rel="author"
-
-```ruby
-set_meta_tags author: "http://yourgplusprofile.com/profile/url"
-# => <link rel="author" href="http://yourgplusprofile.com/profile/url" />
-```
-
-Further reading:
-
-* [About rel="author"](https://support.google.com/webmasters/answer/2539557?hl=en)
-
 ### Publisher links
 
 Link to your Google+ profile using rel="publisher"
