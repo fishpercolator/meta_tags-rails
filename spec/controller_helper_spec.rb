@@ -1,11 +1,14 @@
 require 'spec_helper'
 
-class MetaTagsController < ActionController::Base
+class ActionController::Base
   attr_reader :rendered
 
-  def render_without_meta_tags
+  def render(*args, &block)
     @rendered = true
   end
+end
+
+class MetaTagsController < ActionController::Base
 
   def index
     @page_title       = 'title'
