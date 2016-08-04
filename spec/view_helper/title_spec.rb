@@ -75,12 +75,6 @@ describe MetaTags::ViewHelper do
       subject.display_meta_tags(site: 'someSite', separator: ':').tap do |meta|
         expect(meta).to eq('<title>someSite : someTitle</title>')
       end
-      subject.display_meta_tags(site: 'someSite', separator: '&amp;').tap do |meta|
-        expect(meta).to eq('<title>someSite &amp;amp;amp; someTitle</title>')
-      end
-      subject.display_meta_tags(site: 'someSite', separator: '&amp;'.html_safe).tap do |meta|
-        expect(meta).to eq('<title>someSite &amp;amp; someTitle</title>')
-      end
       subject.display_meta_tags(site: 'someSite: ', separator: false).tap do |meta|
         expect(meta).to eq('<title>someSite: someTitle</title>')
       end
