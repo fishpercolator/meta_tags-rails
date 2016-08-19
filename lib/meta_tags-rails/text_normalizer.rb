@@ -114,8 +114,8 @@ module MetaTags
     # @param [String] natural_separator natural separator to truncate at.
     # @return [String] truncated string.
     #
-    def self.truncate(string, limit = nil, natural_separator = ' ')
-      string = helpers.truncate(string, length: limit, separator: natural_separator, omission: '') if limit
+    def self.truncate(string, limit = nil, natural_separator = ' ', escape = true)
+      string = helpers.truncate(string, length: limit, separator: natural_separator, omission: '', escape: escape) if limit
       string
     end
 
@@ -134,7 +134,7 @@ module MetaTags
       string_array.each do |string|
         limit_left = limit - length - (result.any? ? separator.length : 0)
         if string.length > limit_left
-          result << truncate(string, limit_left, natural_separator)
+          result << truncate(string, limit_left, natural_separator, false)
           break
         end
         length += (result.any? ? separator.length : 0) + string.length

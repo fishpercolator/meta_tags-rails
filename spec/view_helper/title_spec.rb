@@ -136,6 +136,20 @@ describe MetaTags::ViewHelper do
         expect(meta).to eq('<title>anotherTitle -:+ someTitle -:+ someSite</title>')
       end
     end
+
+    it 'should not double-escape quotes' do
+      subject.title(%{Don't double-escape me})
+      subject.display_meta_tags(site: 'someSite').tap do |meta|
+        expect(meta).to eq('<title>someSite | Don&#39;t double-escape me</title>')
+      end
+    end
+
+    it 'should not double-escape quotes when string is truncated for length' do
+      subject.title(%{Don't double-escape this really extremely long title that goes over the length limit for titles})
+      subject.display_meta_tags(site: 'someSite').tap do |meta|
+        expect(meta).to eq('<title>someSite | Don&#39;t double-escape this really extremely long title</title>')
+      end
+    end
   end
 
   context '.display_title' do
